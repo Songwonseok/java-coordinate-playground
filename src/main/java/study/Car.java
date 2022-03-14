@@ -1,34 +1,27 @@
 package study;
 
-public abstract class Car {
-	private final double tripDistance;
-
-	public Car(int tripDistance) {
-		this.tripDistance = tripDistance;
-	}
+public interface Car {
 	/**
 	 * 리터당 이동 거리. 즉, 연비
 	 */
-	abstract double getDistancePerLiter();
+	double getDistancePerLiter();
 
 	/**
 	 * 여행하려는 거리
 	 */
-	double getTripDistance() {
-		return tripDistance;
-	}
+	double getTripDistance();
 
 	/**
 	 * 차종의 이름
 	 */
-	String getName() {
+	default String getName() {
 		return this.getClass().getSimpleName();
 	}
 
 	/**
 	 * 주입해야할 연료량을 구한다.
 	 */
-	double getChargeQuantity() {
+	default double getChargeQuantity() {
 		return getTripDistance() / getDistancePerLiter();
 	}
 }
